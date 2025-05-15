@@ -2,6 +2,7 @@
 	import { onMount } from "svelte";
 	import * as d3 from "d3";
 	import mapboxgl from "mapbox-gl";
+	import { base } from "$app/paths";
 
 	const TOKEN_API = import.meta.env.VITE_MAPBOX_TOKEN;
 	mapboxgl.accessToken = "pk.eyJ1IjoibHVpc3NhbnRlMTgiLCJhIjoiY21hcHFzdWJqMDFpaTJwcTZyM21mMGNoaSJ9.DDiwN0Gb0afF4Oe8PvrA8Q"
@@ -85,7 +86,7 @@
 
 		map.addSource("boston_route", {
 			type: "geojson",
-			data: "/data/Existing_Bike_Network_2022.geojson",
+			data: base + "/data/Existing_Bike_Network_2022.geojson",
 		});
 
 		map.addLayer({
@@ -106,7 +107,7 @@
 
 	async function loadStationData() {
 		try {
-			const csvUrl = "/data/bluebikes-stations.csv";
+			const csvUrl = base + 	"/data/bluebikes-stations.csv";
 			const data = await d3.csv(csvUrl);
 
 			stations = data.map((station) => ({
@@ -125,7 +126,7 @@
 
 	async function loadStationDemand() {
 		try {
-			const csvUrl = "/data/bluebikes-traffic-2024-03.csv";
+			const csvUrl = base + "/data/bluebikes-traffic-2024-03.csv";
 			const data = await d3.csv(csvUrl);
 
 			trips = await d3.csv(csvUrl).then(trips => {
