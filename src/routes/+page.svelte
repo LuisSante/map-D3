@@ -4,6 +4,7 @@
 	import mapboxgl from "mapbox-gl";
 
 	const TOKEN_API = import.meta.env.VITE_MAPBOX_TOKEN;
+	mapboxgl.accessToken = TOKEN_API
 
 	let map;
 	let stations = [];
@@ -44,8 +45,6 @@
 		.scaleSqrt()
 		.domain([0, d3.max(filteredStations, d => d.totalTraffic) || 0])
 		.range(timeFilter === -1 ? [0, 25] : [3, 30]);
-
-	mapboxgl.accessToken = TOKEN_API
 
 	function getCoords(station) {
 		if (!map) return { cx: 0, cy: 0 };

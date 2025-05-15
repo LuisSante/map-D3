@@ -22,12 +22,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Set up GitHub token
-        run: echo "TOKEN_API=${{ secrets.TOKEN_API }}" >> .env
+      - name: Set up environment variable for build
+        env: VITE_MAPBOX_TOKEN: ${{ secrets.VITE_MAPBOX_TOKEN }}
+        run: echo "VITE_MAPBOX_TOKEN=${VITE_MAPBOX_TOKEN}"
 
       - name: build
         env:
           BASE_PATH: "/${{ github.event.repository.name }}"
+          VITE_MAPBOX_TOKEN: ${{ secrets.TOKEN_API }}
         run: |
           npm run build
 
