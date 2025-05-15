@@ -4,7 +4,7 @@
 	import mapboxgl from "mapbox-gl";
 
 	const TOKEN_API = import.meta.env.VITE_MAPBOX_TOKEN;
-	mapboxgl.accessToken = TOKEN_API
+	mapboxgl.accessToken = "pk.eyJ1IjoibHVpc3NhbnRlMTgiLCJhIjoiY21hcHFzdWJqMDFpaTJwcTZyM21mMGNoaSJ9.DDiwN0Gb0afF4Oe8PvrA8Q"
 
 	let map;
 	let stations = [];
